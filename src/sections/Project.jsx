@@ -15,14 +15,15 @@ const Projects = () => {
       const connector = item.querySelector('.project-connector');
 
       // Set initial states
-      gsap.set(image, { opacity: 0, x: index % 2 === 0 ? 300 : -300, scale: 0.8 });
-      gsap.set(text, { opacity: 0, x: index % 2 === 0 ? -300 : 300, y: 50 });
+      gsap.set(image, { opacity: 0, x: index % 2 === 0 ? -500 : 500, y: -300, scale: 0.8 });
+      gsap.set(text, { opacity: 0, x: index % 2 === 0 ? 500 : -500, y: 300, scale: 0.8 });
       gsap.set(connector, { scale: 0 });
 
       // Animate image
       gsap.to(image, {
         opacity: 1,
         x: 0,
+        y: 0,
         scale: 1,
         duration: 1.2,
         ease: 'power2.out',
@@ -39,6 +40,7 @@ const Projects = () => {
         opacity: 1,
         x: 0,
         y: 0,
+        scale: 1,
         duration: 1,
         ease: 'back.out(1.7)',
         scrollTrigger: {

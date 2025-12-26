@@ -101,11 +101,11 @@ body {
 
   /* projects section */
   .project-container {
-    @apply relative flex flex-col items-center gap-16 mt-12;
+    @apply relative flex flex-col items-center gap-32 mt-12;
   }
 
   .project-item {
-    @apply relative flex items-center justify-center gap-16 w-full max-w-6xl px-12;
+    @apply relative flex items-center justify-between gap-32 w-full max-w-7xl px-12;
   }
 
   .project-item:nth-child(even) {
@@ -117,11 +117,11 @@ body {
   }
 
   .project-image-container {
-    @apply relative flex-shrink-0 w-1/2;
+    @apply relative flex-shrink-0 w-1/2 h-96 bg-black-300 bg-opacity-20 backdrop-blur-lg border border-white border-opacity-10 rounded-lg overflow-hidden;
   }
 
   .project-text {
-    @apply w-1/2;
+    @apply w-1/2 bg-black-300 bg-opacity-20 backdrop-blur-lg border border-white border-opacity-10 rounded-lg p-4;
   }
 
   .project-connector {
@@ -166,10 +166,11 @@ body {
   }
 
   .project-image {
-    @apply w-full h-auto rounded-lg shadow-2xl;
+    @apply w-full h-full object-cover rounded-lg shadow-2xl;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
   }
 
   .project-text {
@@ -181,7 +182,24 @@ body {
   }
 
   .project-title {
-    @apply text-xl font-semibold text-white mb-2;
+    @apply absolute bottom-4 left-4 text-xl font-semibold text-white px-2 py-1 rounded-lg;
+    background: rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+  }
+
+  .project-title::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3), rgba(69, 183, 209, 0.3), rgba(249, 202, 36, 0.3));
+    filter: blur(8px);
+    z-index: -1;
+    border-radius: 8px;
   }
 
   .project-description {
