@@ -4,7 +4,7 @@ import Footer from './sections/Footer.jsx';
 import Navbar from './sections/Navbar.jsx';
 import Contact from './sections/Contact.jsx';
 import Clients from './sections/Project.jsx';
-import Info from './sections/info.jsx';
+import Info from './sections/Info.jsx';
 import WorkExperience from './sections/Experience.jsx';
 
 const App = () => {
