@@ -19,5 +19,5 @@ class ContactRequest(BaseModel):
         return v.strip()
 
 class ContactResponse(BaseModel):
-    success: bool
+    status: str
     message: str

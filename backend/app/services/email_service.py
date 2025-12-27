@@ -1,6 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from typing import Optional
 from app.config import settings
 
 class EmailService:
@@ -19,11 +20,16 @@ class EmailService:
         msg.attach(MIMEText(body, 'plain'))
 
         try:
+            print(f"Attempting to connect to SMTP server: {self.smtp_server}:{self.smtp_port}")
             server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+            print("SMTP connection established. Starting TLS...")
             server.starttls()
+            print(f"Attempting login with username: {self.username}")
             server.login(self.username, self.password)
+            print("Login successful. Preparing to send email...")
             text = msg.as_string()
             server.sendmail(self.username, to_email, text)
+            print("Email sent successfully.")
             server.quit()
             return True
         except Exception as e:

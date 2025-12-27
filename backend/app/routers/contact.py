@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from app.models.contact import ContactRequest, ContactResponse
 from app.services.email_service import EmailService
 
@@ -18,16 +18,16 @@ async def submit_contact_form(contact: ContactRequest):
 
         if owner_success and user_success:
             return ContactResponse(
-                success=True,
-                message="Message sent successfully!"
+                status="success",
+                message="Message sent successfully and auto-reply delivered"
             )
         else:
-            raise HTTPException(
-                status_code=500,
-                detail="Failed to send emails. Please try again later."
+            return ContactResponse(
+                status="error",
+                message="Failed to send message"
             )
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail="An error occurred while processing your request."
+        return ContactResponse(
+            status="error",
+            message="Failed to send message"
         )
